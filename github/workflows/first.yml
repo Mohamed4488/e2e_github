@@ -11,7 +11,7 @@ jobs:
 
         steps:
             - name: cloning repo
-              uses: actions/checkout/v4
+              uses: actions/checkout@v4
 
             - name: say hi
               run: echo hello, world
