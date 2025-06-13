@@ -1,0 +1,25 @@
+name: second_workflow
+
+on:
+    push:
+        branches:
+            - main
+    
+    workflow_dispatch:
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: cloning repo
+              uses: actions/checkout@v4
+
+            - name: Building images
+              run: docker build -t mohamed4488/image_repo:latest .
+
+            - name: Docker login
+              run: docker login -u mohamed4488 -p ${{ secrets.DOCKER_HUB_TOKEN }}
+
+            -name: Docker push
+             run: docker push mohamed4488/image_repo:latest
